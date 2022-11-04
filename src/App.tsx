@@ -6,10 +6,12 @@ import AuthenticationPage from "./components/authentication/AuthenticationPage";
 import ProfilePage from "./components/profile/ProfilePage";
 import ShopPage from "./components/shop/ShopPage";
 import Register from "./components/authentication/Register";
+import {useAppSelector} from "./hooks";
 
-const loggedIn = false;
+
 
 function App() {
+    const loggedIn = useAppSelector((state) => state.isLogin);
   return (
       <Router>
           <div className="App">
