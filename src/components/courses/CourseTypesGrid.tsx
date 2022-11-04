@@ -9,7 +9,7 @@ const CourseTypesGrid = () => {
             <h1>Select course type</h1>
             <div className="CourseTypesGrid">
                 {courseTypes.map(type =>
-                    <div onClick={handleClick} className="Tile">
+                    <div className="Tile">
                         {type}
                     </div>
                 )}
