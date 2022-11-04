@@ -11,7 +11,7 @@ import {useAppSelector} from "./hooks";
 
 
 function App() {
-    const loggedIn = useAppSelector((state) => state.isLogin);
+    const loggedIn = useAppSelector((state) => state.userSlice.isLogin);
   return (
       <Router>
           <div className="App">

@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { Navigate, NavLink } from "react-router-dom";
+import {useAppDispatch, useAppSelector} from "../../hooks";
+import {changeEmail, changeName, changePassword, changeSurname} from "../../reducers/unLogUserSlice";
 
 const Register = () => {
+    const dispatch = useAppDispatch();
     const [isRedirect, setIsRedirect] = useState(false);
 
-    const [userName, setUserName] = useState("");
-    const [userSurname, setUserSurname] = useState("");
-    const [userPhone, setUserPhone] = useState("");
-    const [userMail, setUserMail] = useState("");
-    const [userPass, setUserPass] = useState("");
+    const userName = useAppSelector((state) => state.unLogUserSlice.username);
+    const password = useAppSelector((state) => state.unLogUserSlice.password);
+    const userSurname = useAppSelector((state) => state.unLogUserSlice.surname);
+    const userMail = useAppSelector((state) => state.unLogUserSlice.email);
 
 
     return (
@@ -23,35 +25,28 @@ const Register = () => {
                     <form onSubmit={(e) => console.log(userName)}>
                         <div className="mb-3">
                             <input
-                                onChange={(e) => setUserName(e.target.value)}
+                                onChange={(e) => dispatch(changeName(e.target.value))}
                                 className="form-control"
                                 placeholder="Name"
                             />
                         </div>
                         <div className="mb-3">
                             <input
-                                onChange={(e) => setUserSurname(e.target.value)}
+                                onChange={(e) => dispatch(changeSurname(e.target.value))}
                                 className="form-control"
                                 placeholder="Surname"
                             />
                         </div>
                         <div className="mb-3">
-                            <input  type="text" pattern="\d*" maxLength={4}
-                                    onChange={(e) => setUserPhone(e.target.value)}
-                                    className="form-control"
-                                    placeholder="Phone"
-                            />
-                        </div>
-                        <div className="mb-3">
                             <input
-                                onChange={(e) => setUserMail(e.target.value)}
+                                onChange={(e) => dispatch(changeEmail(e.target.value))}
                                 className="form-control"
                                 placeholder="Mail"
                             />
                         </div>
                         <div className="mb-3">
                             <input type='password'
-                                   onChange={(e) => setUserPass(e.target.value)}
+                                   onChange={(e) => dispatch(changePassword(e.target.value))}
                                    className="form-control"
                                    placeholder="Password"
                             />
