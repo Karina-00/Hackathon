@@ -7,11 +7,12 @@ import ProfilePage from "./components/profile/ProfilePage";
 import ShopPage from "./components/shop/ShopPage";
 import Register from "./components/authentication/Register";
 import {useAppSelector} from "./hooks";
+import CoursesPage from "./components/courses/CoursesPage";
 
 
 
 function App() {
-    const loggedIn = useAppSelector((state) => state.isLogin);
+    const loggedIn = useAppSelector((state) => state.userSlice.isLogin);
   return (
       <Router>
           <div className="App">
@@ -21,6 +22,7 @@ function App() {
                   <Route path="/" element={loggedIn ? <ProfilePage/> : <AuthenticationPage/>}/>
                   <Route path="/profile" element={loggedIn ? <ProfilePage/> :  <AuthenticationPage/>}/>
                   <Route path="/shop" element={loggedIn ? <ShopPage/> : <AuthenticationPage/>}/>
+                  <Route path="/courses" element={loggedIn ? <CoursesPage/> : <AuthenticationPage/>}/>
                   <Route path="/register" element={!loggedIn && <Register/>}/>
               </Routes>
           </div>
