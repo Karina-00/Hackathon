@@ -1,0 +1,36 @@
+.ProfilePage {
+    margin: 100px 200px 100px 200px;
+    display: grid;
+    text-align: center;
+    grid-template-columns: 1fr 3fr;
+    align-items: flex-start;
+}
+
+.ImageCard {
+    min-width: 300px;
+    height: auto;
+    padding: 20px;
+    border: gray dotted 1px;
+    border-radius: 20px;
+}
+
+.PageContent {
+    text-align: start;
+    margin: 0 50px;
+}
+
+.ItemsList {
+    width: 100%;
+    height: 200px;
+    border: gray dotted 1px;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px 0 20px 0;
+}
+
+.ProfilePicture {
+    width: 100%;
+    height: auto;
+    background-color: white;
+    object-fit: cover;
+}
