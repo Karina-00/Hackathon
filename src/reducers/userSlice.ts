@@ -14,7 +14,7 @@ const initialState: UserProps = {
 	surname: '',
 	username: '',
 	email: '',
-	isLogin: false,
+	isLogin: true,
 };
 
 

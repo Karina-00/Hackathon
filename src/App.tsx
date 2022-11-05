@@ -15,9 +15,7 @@ function App() {
   return (
       <Router>
           <div className="App">
-              <Navbar
-                cash={3}
-              />
+              {loggedIn && <Navbar cash={3}/>}
               <Routes>
                   {/*if not logged in display only the authentication page - try to do it better*/}
                   <Route path="/" element={loggedIn ? <ProfilePage/> : <AuthenticationPage/>}/>

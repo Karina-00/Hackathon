@@ -89,3 +89,103 @@ code {
   border-radius: 0 0 10px 10px;
 }
 
+.row{
+  margin-top:50px;
+  justify-content: space-between;
+}
+
+.form-control{
+  width:55%;
+}
+
+.login-page{
+  width:100%;
+}
+
+.login-form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.login-form form{
+  width:100%; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputs{
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top:25px; 
+}
+
+.login-button, .register-button{
+  width:55%;
+  height:40px; 
+  margin-top:20px; 
+  background-color:hsl(107, 36%, 82%);
+  border:none; 
+  border-radius:25px; 
+}
+
+.login-button:hover{
+  background-color: hsl(107, 15%, 63%);
+  transition: linear 0.3s;
+}
+
+.register-button:hover{
+  background-color: hsl(107, 15%, 63%);
+  transition: linear 0.3s;
+}
+
+.create-account, .sign-up{
+  margin-top: 20px;
+  color:hsl(0, 0%, 0%);
+}
+
+.login-img{
+  display:flex; 
+  justify-content: right;
+  align-items: center;
+}
+
+.loginImg{
+  width:90%; 
+  height:600px;
+}
+
+.register-page{
+  margin-top: 100px;
+  width:100%;
+}
+
+.register-form{
+  display:flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding:0;
+}
+
+.register-form form{
+  width:100%; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-image{
+  width:90%; 
+}
+
+.register-img{
+  padding:0;
+}
