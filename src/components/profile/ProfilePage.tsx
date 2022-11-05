@@ -34,6 +34,7 @@ const getUserApiAsync = createAsyncThunk(
 
 const ProfilePage = () => {
     const username = useAppSelector((state) => state.userSlice.username);
+    const cash = useAppSelector((state) => state.userSlice.username);
 
     const dispatch = useAppDispatch();
 
