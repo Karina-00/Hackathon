@@ -6,24 +6,61 @@ export type QuestionProps = {
     answers: string[]
 }
 
-type CourseProps = {
+export type CourseProps = {
+    id: string,
     name: string,
     questions: QuestionProps[]
 }
 
-const initialState: CourseProps = {
-    name: 'Historia',
-    questions: [
-         {
-             question: 'W ktorym roku byla bitwa pod Grunwaldem?',
-             answers: ['1410', '1400', '1500', '996']
+type CoursesList = {
+    courses: CourseProps[]
+}
+
+const initialState: CoursesList = {
+    courses: [
+        {
+            id: '123',
+            name: 'Historia',
+            questions: [
+                {
+                    question: 'W ktorym roku byla bitwa pod Grunwaldem?',
+                    answers: ['1410', '1400', '1500', '996']
+                },
+                {
+                    question: 'W ktorym roku byl chrzest Polski?',
+                    answers: ['996', '1410', '1400', '1500']
+                },
+            ]
         },
         {
-            question: 'W ktorym roku byl chrzest Polski?',
-            answers: ['996', '1410', '1400', '1500']
-        },
+            id: '345',
+            name: 'Matematyka',
+            questions: [
+                {
+                    question: 'Ile to jest 2+2?',
+                    answers: ['4', '1', '2', '0']
+                },
+                {
+                    question: 'Ile to jest 8:4?',
+                    answers: ['2', '8', '4', '3']
+                },
+            ]
+        }
     ]
+
 };
+
+function getCoursesList() {
+    return fetch('https://chilledu-backend.herokuapp.com/api/games')
+    .then((response) => response.json())
+        .then((responseJson) => {
+            return responseJson.success;
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+}
+
 
 export const courseSlice = createSlice({
     name: 'course',
