@@ -50,6 +50,18 @@ const initialState: CoursesList = {
 
 };
 
+function getCoursesList() {
+    return fetch('https://chilledu-backend.herokuapp.com/api/games')
+    .then((response) => response.json())
+        .then((responseJson) => {
+            return responseJson.success;
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+}
+
+
 export const courseSlice = createSlice({
     name: 'course',
     initialState,
