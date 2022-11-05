@@ -66,6 +66,13 @@ const Register = () => {
                             <input
                                 onChange={(e) => dispatch(changeName(e.target.value))}
                                 className="form-control"
+                                placeholder="Username"
+                            />
+                        </div>
+                        <div className="mb-3 inputs">
+                            <input
+                                onChange={(e) => dispatch(changeName(e.target.value))}
+                                className="form-control"
                                 placeholder="Name"
                             />
                         </div>
@@ -90,6 +97,9 @@ const Register = () => {
                                    placeholder="Password"
                             />
                         </div>
+                        <div className="file-uploader inputs">
+                            <input type="file" className="form-control" />
+                                </div>
                         </form>
                     <button className="register-button" onClick={()=> dispatch(setUserApiAsync({username: userName, password, name, email: userMail, surname }))}>Submit</button>
                     <NavLink to="/" className="sign-up" style={{ float:'right' }}>Cancel</NavLink>
