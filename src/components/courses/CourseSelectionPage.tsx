@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {NavLink, useParams} from "react-router-dom";
+import {Button} from "nes-react";
 
 type CourseProp = {
     id: number,
@@ -22,13 +23,15 @@ const CourseSelectionPage = () => {
     return (
         <div className="CoursesPageContainer">
             <h1>{type}</h1>
-            {courses && courses.map((course: CourseProp) =>
-                <NavLink key={course.id} to={`/course/${course.id}`}>
-                    <button className="Tile">
-                        <h3>{course.name}</h3>
-                    </button>
-                </NavLink>
-            )}
+            <div className="CoursesList">
+                {courses && courses.map((course: CourseProp) =>
+                    <NavLink key={course.id} to={`/course/${course.id}`}>
+                        <Button className="CourseButton">
+                            <h3>{course.name}</h3>
+                        </Button>
+                    </NavLink>
+                )}
+            </div>
         </div>
     )
 

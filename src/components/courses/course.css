@@ -6,16 +6,38 @@
 .CourseTypesGrid {
     display: flex;
     margin: 50px;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
+    gap: 20px;
 }
 
 .Tile {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     text-align: center;
     border: black dotted 1px;
     margin: 40px;
+}
+
+.Tile h3 {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    background: black;
+    color: cornsilk;
+    padding: 3px;
+}
+
+.CoursesList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 30px;
+}
+
+.CourseButton {
+    width: 100%;
 }
 
 .AnswersWrapper {
@@ -27,5 +49,5 @@
 
 .AvatarWrapper {
     width: 100%;
-    height: auto;
+    height: 90%;
 }

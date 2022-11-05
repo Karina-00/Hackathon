@@ -28,13 +28,13 @@ const QuestionView = ({question, answers, handleNextQuestion, userHP, enemyHP}: 
                         <img className="AvatarWrapper" src={ProfilePicture} alt="enemy image"/>
 
                         <Progress value={userHP} max={100} error />
-                        {userHP}%
+                        <p>{userHP}%</p>
                     </Container>
                 </Col>
                 <Col>
                     <Container className="AnswersWrapper">
                         {answers.map((answer: string) => (
-                            <Button primary onClick={() => handleNextQuestion()}>{answer}</Button>
+                            <Button primary onClick={() => handleNextQuestion}>{answer}</Button>
                         ))}
                     </Container>
                 </Col>
@@ -42,15 +42,11 @@ const QuestionView = ({question, answers, handleNextQuestion, userHP, enemyHP}: 
                     <Container centered className="AnswersWrapper">
                         <img className="AvatarWrapper" src={EnemyImage1} alt="enemy image"/>
                         <Progress value={enemyHP} max={100} error />
-                        {enemyHP}%
+                        <p>{enemyHP}%</p>
+
                     </Container>
                 </Col>
             </Row>
-            {/*<Row>*/}
-            {/*    <Col>*/}
-            {/*        <Container dark>Dark</Container>*/}
-            {/*    </Col>*/}
-            {/*</Row>*/}
         </div>
 
 
