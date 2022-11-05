@@ -17,3 +17,15 @@
     border: black dotted 1px;
     margin: 40px;
 }
+
+.AnswersWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.AvatarWrapper {
+    width: 100%;
+    height: auto;
+}

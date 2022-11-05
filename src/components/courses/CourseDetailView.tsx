@@ -2,7 +2,9 @@ import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import './course.css';
 import QuestionView from "./QuestionView";
-// import "nes.css/css/nes.min.css";
+import Row from "./games/Row";
+import Col from "./games/Col";
+import {Container} from "nes-react";
 
 export type Question = {
     question: string;
@@ -25,6 +27,7 @@ const CourseDetailView = () => {
     const questionsCount = course?.questions.length;
     let userHP = 0;
     let enemyHP = 0;
+    let cash = 0;
 
     useEffect( () => {
         fetch(`https://chilledu-backend.herokuapp.com/api/games/${id}`)
@@ -36,17 +39,15 @@ const CourseDetailView = () => {
     }, [id]);
 
     const goToNextQuestion = () => {
-        console.log('next question');
         console.log(questionIndex + 1, questionsCount!)
         if (questionIndex + 1 < questionsCount!) {
             setQuestionIndex(questionIndex + 1);
         } else {
             setDisplaySummary(true);
         }
-        // setId()
     }
 
-    return(
+    return (
         <div className="CourseDetailView">
             <h1>{course && course.name}</h1>
             {displaySummary ?
@@ -54,17 +55,21 @@ const CourseDetailView = () => {
                     <h3>Summary</h3>
                     <p>User HP: {userHP}</p>
                     <p>Enemy HP: {enemyHP}</p>
+                    <p>Cash: ${cash}</p>
 
                 </div>
                 :
                 <div>
-                    <h3>Question {questionIndex+1}/{course && course.questions.length}</h3>
-                    { course && <QuestionView question={course.questions[questionIndex].question} answers={course.questions[questionIndex].answers}  handleNextQuestion={goToNextQuestion}/>}
+                    <h3>Question {questionIndex + 1}/{course && course.questions.length}</h3>
+                    <Container>
+                        {course && <QuestionView question={course.questions[questionIndex].question}
+                                                 answers={course.questions[questionIndex].answers}
+                                                 handleNextQuestion={goToNextQuestion}/>}
+                    </Container>
                 </div>
             }
-
         </div>
-    )
+    );
 
 }
 
