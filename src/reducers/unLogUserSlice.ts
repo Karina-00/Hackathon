@@ -1,4 +1,6 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
+
+
 
 
 type UserProps = {
@@ -21,11 +23,15 @@ const initialState: UserProps = {
 
 
 function setLoginUserApiAsync() {
-	return fetch('https://mywebsite.com/api/login', {
+	return fetch('https://chilledu-backend.herokuapp.com/api/login', {
 		method: 'POST',
 		body: JSON.stringify({
-			username: 'ola',
-			password: 'lol',
+			username: 'Patryczek',
+			name: '',
+			surname: '',
+			email: '',
+			password: 'tests',
+			profile_pic: null,
 		})
 	}).then((response) => response.json())
 		.then((responseJson) => {
@@ -35,6 +41,8 @@ function setLoginUserApiAsync() {
 			console.error(error);
 		});
 }
+
+
 
 export const unLogUserSlice = createSlice({
 	name: 'user',
@@ -53,12 +61,16 @@ export const unLogUserSlice = createSlice({
 		changeSurname: (state, { payload }: PayloadAction<UserProps['surname']>) => {
 			state.surname = payload;
 		},
+		changeIsLogin: (state, { payload }: PayloadAction<UserProps['isLogin']>) => {
+			state.isLogin = payload;
+			console.log(state.isLogin);
+		},
 	},
 	extraReducers: (builder) => {
 	},
 },)
 
 
-export const { changeName, changePassword, changeSurname, changeEmail } = unLogUserSlice.actions;
+export const { changeName, changePassword, changeSurname, changeEmail, changeIsLogin } = unLogUserSlice.actions;
 
 export default unLogUserSlice.reducer;

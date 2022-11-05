@@ -2,27 +2,66 @@ import React, { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { Navigate, NavLink } from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../hooks";
-import {changeEmail, changeName, changePassword, changeSurname} from "../../reducers/unLogUserSlice";
+import {changeEmail, changeIsLogin, changeName, changePassword, changeSurname} from "../../reducers/unLogUserSlice";
+import {createAsyncThunk} from "@reduxjs/toolkit";
+import {changeIsLoginD} from "../../reducers/userSlice";
+
+type Prop = {
+    username: string;
+    name?: string;
+    surname?: string,
+    email?: string,
+    password: string,
+}
+
+const setUserApiAsync = createAsyncThunk(
+    'hubs/fetchHubsData',
+    async ({username, password, name, email, surname}: Prop, { rejectWithValue , dispatch}) => {
+        try {
+            await fetch('https://chilledu-backend.herokuapp.com/api/children/registration', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: 'Olaaa',
+                    name: 'Ola',
+                    surname: 'JJ',
+                    email: 'testt@gmail.com',
+                    password: 'lol',
+                    profile_pic: null,
+                })
+            }).then((response) => {
+                const res = response.json();
+                dispatch(changeIsLogin(true));
+                dispatch(changeIsLoginD(true));
+            })
+        } catch (err) {
+            return rejectWithValue(err);
+        }
+    },
+);
+
 
 const Register = () => {
     const dispatch = useAppDispatch();
-    const [isRedirect, setIsRedirect] = useState(false);
 
     const userName = useAppSelector((state) => state.unLogUserSlice.username);
     const password = useAppSelector((state) => state.unLogUserSlice.password);
-    const userSurname = useAppSelector((state) => state.unLogUserSlice.surname);
+    const surname = useAppSelector((state) => state.unLogUserSlice.surname);
     const userMail = useAppSelector((state) => state.unLogUserSlice.email);
+    const name = useAppSelector((state) => state.unLogUserSlice.name);
 
 
     return (
         <>
-            {isRedirect && <Navigate to="/"/>}
             <ToastContainer />
             <div className="row">
                 <div className="col-sm-4"></div>
                 <div className="col-sm-4">
                     <h1>User Register</h1>
-                    <form onSubmit={(e) => console.log(userName)}>
+                    <form>
                         <div className="mb-3">
                             <input
                                 onChange={(e) => dispatch(changeName(e.target.value))}
@@ -51,9 +90,10 @@ const Register = () => {
                                    placeholder="Password"
                             />
                         </div>
-                        <button className="btn btn-primary">Submit</button>
-                        <NavLink to="/" className="btn btn-danger" style={{ float:'right' }}>Cancel</NavLink>
-                    </form>
+                        </form>
+                    <button className="btn btn-primary" onClick={()=> dispatch(setUserApiAsync({username: userName, password, name, email: userMail, surname }))}>Submit</button>
+                    <NavLink to="/" className="btn btn-danger" style={{ float:'right' }}>Cancel</NavLink>
+
                 </div>
                 <div className="col-sm-4"></div>
             </div>
