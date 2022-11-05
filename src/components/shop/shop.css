@@ -1,6 +1,6 @@
 .sidenav {
     height: 700px;
-    width: 300px;
+    width: 400px;
     position: relative;
     bottom: auto;
     z-index: 1;
@@ -30,7 +30,8 @@
 
 
 .product-card {
-    width: 300px;
+    width: 280px;
+    height: 500px;
     position: relative;
     box-shadow: 0 2px 7px #dfdfdf;
     margin: 50px 40px 40px 40px;
