@@ -8,6 +8,8 @@ import ShopPage from "./components/shop/ShopPage";
 import Register from "./components/authentication/Register";
 import {useAppSelector} from "./hooks";
 import CoursesPage from "./components/courses/CoursesPage";
+import CourseSelectionPage from "./components/courses/CourseSelectionPage";
+import Question from "./components/courses/Question";
 
 
 
@@ -20,11 +22,12 @@ function App() {
                 cash={3}
               />
               <Routes>
-                  {/*if not logged in display only the authentication page - try to do it better*/}
                   <Route path="/" element={loggedIn ? <ProfilePage/> : <AuthenticationPage/>}/>
                   <Route path="/profile" element={loggedIn ? <ProfilePage/> :  <AuthenticationPage/>}/>
                   <Route path="/shop" element={loggedIn ? <ShopPage/> : <AuthenticationPage/>}/>
                   <Route path="/courses" element={loggedIn ? <CoursesPage/> : <AuthenticationPage/>}/>
+                  <Route path="/course-type/:type" element={loggedIn ? <CourseSelectionPage/> : <AuthenticationPage/>}/>
+                  <Route path="/course/:id/:i" element={loggedIn ? <Question/> : <AuthenticationPage/>}/>
                   <Route path="/register" element={!loggedIn && <Register/>}/>
               </Routes>
           </div>

@@ -1,18 +1,14 @@
 import React from "react";
 import {useAppSelector} from "../../hooks";
 import Question from "./Question";
-import CourseTypesGrid from "./CourseTypesGrid";
+import CourseTypeSelection from "./CourseTypeSelection";
 
 
 const CoursesPage = () => {
-    const courseSlice = useAppSelector((state) => state.coursesSlice);
+    const courses = useAppSelector((state) => state.coursesSlice.courses);
     return (
         <div className="CoursesPageContainer">
-            <CourseTypesGrid/>
-            {/*<p>Course name: {courseSlice.name}</p>*/}
-            {/*{courseSlice.questions.map(question => (*/}
-            {/*    <Question question={question}/>*/}
-            {/*))}*/}
+            <CourseTypeSelection/>
         </div>
     )
 
