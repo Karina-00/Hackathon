@@ -23,11 +23,13 @@ const CourseDetailView = () => {
     const [course, setCourse] = useState<Course>();
     const [questionIndex, setQuestionIndex] = useState(0);
     const [displaySummary, setDisplaySummary] = useState(false);
+    const [userHP, setUserHP] = useState(100);
+    const [enemyHP, setEnemyHP] = useState(100);
 
     const questionsCount = course?.questions.length;
-    let userHP = 100;
-    let enemyHP = 100;
+    const fractionHPPerRound = (1 / questionsCount!) * 100;
     let cash = 0;
+
 
     useEffect( () => {
         fetch(`https://chilledu-backend.herokuapp.com/api/games/${id}`)
@@ -39,10 +41,9 @@ const CourseDetailView = () => {
     }, [id]);
 
     const goToNextQuestion = () => {
-        console.log(questionIndex + 1, questionsCount!)
-        if (questionIndex + 1 < questionsCount!) {
             setQuestionIndex(questionIndex + 1);
-        } else {
+            setEnemyHP(enemyHP - fractionHPPerRound);
+        if (questionIndex + 1 >= questionsCount!) {
             setDisplaySummary(true);
         }
     }
@@ -65,7 +66,8 @@ const CourseDetailView = () => {
                         {course && <QuestionView question={course.questions[questionIndex].question}
                                                  answers={course.questions[questionIndex].answers}
                                                  handleNextQuestion={goToNextQuestion}
-                        userHP={userHP} enemyHP={enemyHP}/>}
+                                                 userHP={userHP}
+                                                 enemyHP={enemyHP}/>}
                     </Container>
                 </div>
             }

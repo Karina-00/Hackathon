@@ -26,7 +26,6 @@ const QuestionView = ({question, answers, handleNextQuestion, userHP, enemyHP}: 
                 <Col>
                     <Container centered className="AnswersWrapper">
                         <img className="AvatarWrapper" src={ProfilePicture} alt="enemy image"/>
-
                         <Progress value={userHP} max={100} error />
                         <p>{userHP}%</p>
                     </Container>
@@ -34,7 +33,8 @@ const QuestionView = ({question, answers, handleNextQuestion, userHP, enemyHP}: 
                 <Col>
                     <Container className="AnswersWrapper">
                         {answers.map((answer: string) => (
-                            <Button primary onClick={() => handleNextQuestion}>{answer}</Button>
+                            <Button primary onClick={() =>
+                                handleNextQuestion()}>{answer}</Button>
                         ))}
                     </Container>
                 </Col>
@@ -43,14 +43,10 @@ const QuestionView = ({question, answers, handleNextQuestion, userHP, enemyHP}: 
                         <img className="AvatarWrapper" src={EnemyImage1} alt="enemy image"/>
                         <Progress value={enemyHP} max={100} error />
                         <p>{enemyHP}%</p>
-
                     </Container>
                 </Col>
             </Row>
         </div>
-
-
-
     )
 }
 
