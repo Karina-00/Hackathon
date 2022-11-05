@@ -25,8 +25,8 @@ const CourseDetailView = () => {
     const [displaySummary, setDisplaySummary] = useState(false);
 
     const questionsCount = course?.questions.length;
-    let userHP = 0;
-    let enemyHP = 0;
+    let userHP = 100;
+    let enemyHP = 100;
     let cash = 0;
 
     useEffect( () => {
@@ -64,7 +64,8 @@ const CourseDetailView = () => {
                     <Container>
                         {course && <QuestionView question={course.questions[questionIndex].question}
                                                  answers={course.questions[questionIndex].answers}
-                                                 handleNextQuestion={goToNextQuestion}/>}
+                                                 handleNextQuestion={goToNextQuestion}
+                        userHP={userHP} enemyHP={enemyHP}/>}
                     </Container>
                 </div>
             }
