@@ -11,6 +11,8 @@ import {useAppDispatch, useAppSelector} from "../../hooks";
 import {Container} from "nes-react";
 import MoneyIcon from '../../assets/money.png'
 
+import ProfilePicture from '../../assets/PeopleAvatars/WhiteShortBlond.png';
+
 
 const getUserApiAsync = createAsyncThunk(
     'ProfilePage',
@@ -58,7 +60,7 @@ const ProfilePage = () => {
        <div className="ProfilePage">
          <div className="UserSide">
            <h1 className="ProfileHeader">Profile</h1>
-           <img src={LoginImage} alt="user-avatar" className="avatar"></img>
+           <img src={ProfilePicture} alt="user-avatar" className="avatar"></img>
            <h2 className="UserName">{username}</h2>
            <Container rounded>Lvl 22</Container>
            <Container rounded>

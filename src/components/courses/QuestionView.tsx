@@ -5,7 +5,7 @@ import {Button, Container, Progress} from "nes-react";
 import EnemyImage1 from '../../assets/enemies/enemy1.png';
 import EnemyImage2 from '../../assets/enemies/enemy2.png';
 import EnemyImage3 from '../../assets/enemies/enemy3.png';
-import BlackLongBlack from '../../assets/PeopleAvatars/BlackLongBlack.png';
+import ProfilePicture from '../../assets/PeopleAvatars/WhiteShortBlond.png';
 import Location1 from '../../assets/locationBackground/location1.png';
 import Location2 from '../../assets/locationBackground/location2.png';
 
@@ -30,7 +30,7 @@ const QuestionView = ({question, answers, correct, handleNextQuestion, userHP, e
                 <Col>
                     <Container centered className="AnswersWrapper" style={{backgroundImage: `url(${Location1})`,
                         backgroundPosition: "center", backgroundSize: "cover"}}>
-                        <img className="AvatarWrapper" src={BlackLongBlack} alt="enemy image"/>
+                        <img className="AvatarWrapper" src={ProfilePicture} alt="enemy image"/>
                         <Progress value={userHP} max={100} error />
                         <p>{Math.round(userHP)}%</p>
                     </Container>
