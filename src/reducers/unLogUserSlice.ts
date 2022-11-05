@@ -2,7 +2,6 @@ import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 
 
-
 type UserProps = {
 	name?: string,
 	surname?: string,
@@ -17,7 +16,7 @@ const initialState: UserProps = {
 	surname: '',
 	username: '',
 	email: '',
-	isLogin: false,
+	isLogin: true,
 	password: '',
 };
 

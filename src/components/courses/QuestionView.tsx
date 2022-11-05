@@ -10,14 +10,17 @@ import ProfilePicture from '../../assets/avatar_placeholder.png';
 type QuestionHandler = {
     question: string;
     answers: string[];
+    correct: number;
     handleNextQuestion: Function;
     userHP: number;
     enemyHP: number;
+    enemyIndex: number;
 }
 
-const QuestionView = ({question, answers, handleNextQuestion, userHP, enemyHP}: QuestionHandler) => {
-
+const QuestionView = ({question, answers, correct, handleNextQuestion, userHP, enemyHP, enemyIndex}: QuestionHandler) => {
     const enemyImages = [EnemyImage1, EnemyImage2, EnemyImage3];
+    let answersCounter = 0;
+    const correctAnswer = answers[correct];
 
     return(
         <div className="QuestionView">
@@ -33,16 +36,17 @@ const QuestionView = ({question, answers, handleNextQuestion, userHP, enemyHP}: 
                 <Col>
                     <Container className="AnswersWrapper">
                         {answers.map((answer: string) => (
-                            <Button primary onClick={() =>
-                                handleNextQuestion()}>{answer}</Button>
+                            <Button primary onClick={() => {
+                                return handleNextQuestion(answer === correctAnswer);
+                            }}>{answer}</Button>
                         ))}
                     </Container>
                 </Col>
                 <Col>
                     <Container centered className="AnswersWrapper">
-                        <img className="AvatarWrapper" src={EnemyImage1} alt="enemy image"/>
+                        <img className="AvatarWrapper" src={enemyImages[enemyIndex]} alt="enemy image"/>
                         <Progress value={enemyHP} max={100} error />
-                        <p>{enemyHP}%</p>
+                        <p>{Math.round(enemyHP)}%</p>
                     </Container>
                 </Col>
             </Row>

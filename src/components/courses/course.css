@@ -11,6 +11,10 @@
     gap: 20px;
 }
 
+.Summary{
+    margin: 50px;
+}
+
 .Tile {
     width: 250px;
     height: 250px;
