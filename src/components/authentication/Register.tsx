@@ -16,7 +16,7 @@ type Prop = {
 }
 
 const setUserApiAsync = createAsyncThunk(
-    'hubs/fetchHubsData',
+    'Register',
     async ({username, password, name, email, surname}: Prop, { rejectWithValue , dispatch}) => {
         try {
             await fetch('https://chilledu-backend.herokuapp.com/api/children/registration', {
@@ -33,11 +33,11 @@ const setUserApiAsync = createAsyncThunk(
                     password: 'lol',
                     profile_pic: null,
                 })
-            }).then((response) => {
-                const res = response.json();
-                dispatch(changeIsLogin(true));
-                dispatch(changeIsLoginD(true));
-            })
+            }).then((response) => response.json())
+                .then(()=>{
+                    dispatch(changeIsLogin(true));
+                    dispatch(changeIsLoginD(true));
+                })
         } catch (err) {
             return rejectWithValue(err);
         }

@@ -13,7 +13,7 @@ type Prop = {
 }
 
 const getLoginUserApiAsync = createAsyncThunk(
-    'hubs/fetchHubsData',
+    'Login',
     async ({username, password}: Prop, { rejectWithValue , dispatch}) => {
         try {
             await fetch('https://chilledu-backend.herokuapp.com/api/login', {
@@ -26,11 +26,12 @@ const getLoginUserApiAsync = createAsyncThunk(
                     username: 'Patryczek',
                     password: 'test',
                 })
-            }).then((response) => {
-                const res = response.json();
-                dispatch(changeIsLogin(true));
-                dispatch(changeIsLoginD(true));
-            })
+            }).then((response) => response.json())
+                .then((data)=>{
+                    dispatch(changeIsLogin(data.id));
+                    dispatch(changeIsLogin(true));
+                    dispatch(changeIsLoginD(true));
+                })
         } catch (err) {
             return rejectWithValue(err);
         }

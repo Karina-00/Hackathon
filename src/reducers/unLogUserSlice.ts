@@ -22,26 +22,6 @@ const initialState: UserProps = {
 };
 
 
-function setLoginUserApiAsync() {
-	return fetch('https://chilledu-backend.herokuapp.com/api/login', {
-		method: 'POST',
-		body: JSON.stringify({
-			username: 'Patryczek',
-			name: '',
-			surname: '',
-			email: '',
-			password: 'tests',
-			profile_pic: null,
-		})
-	}).then((response) => response.json())
-		.then((responseJson) => {
-			return responseJson.success;
-		})
-		.catch((error) => {
-			console.error(error);
-		});
-}
-
 
 
 export const unLogUserSlice = createSlice({
