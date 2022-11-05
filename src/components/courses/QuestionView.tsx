@@ -5,7 +5,9 @@ import {Button, Container, Progress} from "nes-react";
 import EnemyImage1 from '../../assets/enemies/enemy1.png';
 import EnemyImage2 from '../../assets/enemies/enemy2.png';
 import EnemyImage3 from '../../assets/enemies/enemy3.png';
-import ProfilePicture from '../../assets/avatar_placeholder.png';
+import BlackLongBlack from '../../assets/PeopleAvatars/BlackLongBlack.png';
+import Location1 from '../../assets/locationBackground/location1.png';
+import Location2 from '../../assets/locationBackground/location2.png';
 
 type QuestionHandler = {
     question: string;
@@ -19,7 +21,6 @@ type QuestionHandler = {
 
 const QuestionView = ({question, answers, correct, handleNextQuestion, userHP, enemyHP, enemyIndex}: QuestionHandler) => {
     const enemyImages = [EnemyImage1, EnemyImage2, EnemyImage3];
-    let answersCounter = 0;
     const correctAnswer = answers[correct];
 
     return(
@@ -27,14 +28,15 @@ const QuestionView = ({question, answers, correct, handleNextQuestion, userHP, e
             <h3>{question}</h3>
             <Row>
                 <Col>
-                    <Container centered className="AnswersWrapper">
-                        <img className="AvatarWrapper" src={ProfilePicture} alt="enemy image"/>
+                    <Container centered className="AnswersWrapper" style={{backgroundImage: `url(${Location1})`,
+                        backgroundPosition: "center", backgroundSize: "cover"}}>
+                        <img className="AvatarWrapper" src={BlackLongBlack} alt="enemy image"/>
                         <Progress value={userHP} max={100} error />
-                        <p>{userHP}%</p>
+                        <p>{Math.round(userHP)}%</p>
                     </Container>
                 </Col>
                 <Col>
-                    <Container className="AnswersWrapper">
+                    <Container className="AnswersWrapper Answers">
                         {answers.map((answer: string) => (
                             <Button primary onClick={() => {
                                 return handleNextQuestion(answer === correctAnswer);
@@ -43,7 +45,8 @@ const QuestionView = ({question, answers, correct, handleNextQuestion, userHP, e
                     </Container>
                 </Col>
                 <Col>
-                    <Container centered className="AnswersWrapper">
+                    <Container centered className="AnswersWrapper" style={{backgroundImage: `url(${Location2})`,
+                        backgroundPosition: "center", backgroundSize: "cover"}}>
                         <img className="AvatarWrapper" src={enemyImages[enemyIndex]} alt="enemy image"/>
                         <Progress value={enemyHP} max={100} error />
                         <p>{Math.round(enemyHP)}%</p>

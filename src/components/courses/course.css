@@ -1,6 +1,6 @@
 
 .CoursesPageContainer {
-    margin: 50px;
+    margin: 50px 100px 50px 100px;
 }
 
 .CourseTypesGrid {
@@ -51,7 +51,20 @@
     height: 100%;
 }
 
+.AnswersWrapper p {
+    color: white;
+}
+
+.Answers {
+    justify-content: center;
+}
+
+.Result {
+    width: 600px;
+    margin: auto;
+}
+
 .AvatarWrapper {
     width: 100%;
-    height: 90%;
+    height: 300px;
 }

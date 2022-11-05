@@ -4,8 +4,7 @@ import './course.css';
 import DungeonPicture from '../../assets/course_types/dungeon.png';
 import RacePicture from '../../assets/course_types/race.png';
 import DuelPicture from '../../assets/course_types/duel.png';
-import Row from "./games/Row";
-import {Container, Button} from "nes-react";
+import {Button} from "nes-react";
 
 
 const CoursesPage = () => {
