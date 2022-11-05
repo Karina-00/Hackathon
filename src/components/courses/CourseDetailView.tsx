@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import './course.css';
 import QuestionView from "./QuestionView";
-import {Container} from "nes-react";
+import {Container, Sprite, Balloon} from "nes-react";
 
 export type Question = {
     question: string;
@@ -15,6 +15,7 @@ type Course = {
     type: number;
     name: string;
     cash: number;
+    health: number;
     questions: Question[];
 }
 
@@ -29,6 +30,7 @@ const CourseDetailView = () => {
 
     const questionsCount = course?.questions.length;
     const fractionHPPerRound = (1 / questionsCount!) * 100;
+    const userFractionHPPerRound = (1 / course?.health!) * 100;
     const enemyIndex = parseInt(id!) % 3;
 
 
@@ -42,15 +44,18 @@ const CourseDetailView = () => {
     }, [id]);
 
     const goToNextQuestion = (isCorrect: boolean) => {
-        console.log(isCorrect);
         if (isCorrect) {
             setEnemyHP(enemyHP - fractionHPPerRound);
-            setQuestionIndex(questionIndex + 1);
         } else {
-            setUserHP(userHP - fractionHPPerRound);
+            const newUserHP = userHP - userFractionHPPerRound;
+            setUserHP(newUserHP);
+            if(newUserHP <= 1) {
+                setDisplaySummary(true);
+            }
         }
+        setQuestionIndex(questionIndex + 1);
 
-        if (questionIndex + 1 >= questionsCount!) {
+        if (questionIndex + 1 >= questionsCount! ) {
             setCash(course?.cash!);
             setDisplaySummary(true);
         }
@@ -61,10 +66,23 @@ const CourseDetailView = () => {
             <h1>{course && course.name}</h1>
             {displaySummary ?
                 <div className="Summary">
-                    <h3>Summary</h3>
-                    <p>User HP: {userHP}</p>
-                    <p>Cash: ${cash}</p>
-
+                    {userHP > 0
+                        ? <div className="Result">
+                            <div style={{ display: "flex" }}>
+                                <Sprite sprite="bcrikko" style={{ alignSelf: "flex-end" }} />
+                                <Balloon style={{ margin: "2rem", maxWidth: "400px" }} fromLeft>
+                                    Congrats! You won!
+                                </Balloon>
+                            </div>
+                    </div>
+                        : <div className="Result">
+                            <div style={{ display: "flex" }}>
+                                <Sprite sprite="kirby" style={{ alignSelf: "flex-end" }} />
+                                <Balloon style={{ margin: "2rem", maxWidth: "400px" }} fromLeft>
+                                    You lost :( Try again!
+                                </Balloon>
+                            </div>
+                        </div>}
                 </div>
                 :
                 <div>
