@@ -17,7 +17,6 @@ code {
 }
 
 .logo{
-  font-family: 'Handlee', cursive;
   font-size:1.7rem; 
 }
 
@@ -44,7 +43,7 @@ code {
   position:relative; 
 }
 
-.avatar-item .dropdown-content{
+.avatar-item:hover .dropdown-content{
    display: block;
 }
 
@@ -61,12 +60,13 @@ code {
 .dropdown-content{
   position:absolute; 
   left:-150px; 
-  top:70px; 
+  top:50px; 
   background-color: #f1f1f1;
   min-width: 200px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   display: none;
   border-radius:10px;
+  z-index:2; 
 }
 
 .dropdown-item{
