@@ -14,13 +14,18 @@
     flex-direction: column;
     align-items: center;
     background-color: hsl(107, 36%, 82%);
+    border-radius: 15px 0 0 15px; 
 }
 
 .AwardsSide{
     width:40%; 
     height:600px; 
     display: flex;
+    flex-direction: column;
     background-color: hsl(109, 8%, 51%);
+    border-radius: 0 15px 15px 0; 
+    box-sizing: border-box;
+    padding:30px;
 }
 
 .ProfileHeader{
@@ -34,4 +39,11 @@
     margin-top: 30px;
     border-radius: 100%;
     border:20px solid hsl(107, 51%, 87%); 
+}
+
+.switchButton{
+   width:120px; 
+   height:40px; 
+   background-color: hsl(107, 51%, 87%);
+   border: 2px solid hsl(109, 8%, 51%);
 }

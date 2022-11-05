@@ -15,7 +15,10 @@ const ProfilePage = () => {
            <h2 className="UserName">{username}</h2>
          </div>
          <div className="AwardsSide">
-            
+            <div className="switch">
+              <button className="switchButton">Awards</button>
+              <button className="switchButton">Storage</button>
+            </div>
          </div>
        </div>
     )
