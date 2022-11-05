@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
 import "./profile_page.css";
-import LoginImage from '../../assets/loginImg.png';
 import Item from './item'
 import StorageItem1 from '../../assets/PeopleSkins/BlueShirt.png'
 import AwardItem1 from '../../assets/PeopleSkins/GreenShirt.png'
 import AwardItem2 from '../../assets/PeopleSkins/GreySuit.png'
+import AwardItem3 from '../../assets/trophy.png'
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import { changeUser } from "../../reducers/userSlice";
 import {useAppDispatch, useAppSelector} from "../../hooks";
@@ -76,7 +76,8 @@ const ProfilePage = () => {
               <>
               <Item itemImage={AwardItem1}/>
               <Item itemImage={AwardItem2}/>
-              </> : 
+              <Item itemImage={AwardItem3}/>
+              </> :
               <Item itemImage={StorageItem1}/>
               }
             </div>
