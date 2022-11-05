@@ -9,7 +9,8 @@ import Register from "./components/authentication/Register";
 import {useAppSelector} from "./hooks";
 import CoursesPage from "./components/courses/CoursesPage";
 import CourseSelectionPage from "./components/courses/CourseSelectionPage";
-import Question from "./components/courses/Question";
+import Question from "./components/courses/QuestionView";
+import CourseDetailView from "./components/courses/CourseDetailView";
 
 
 
@@ -27,7 +28,7 @@ function App() {
                   <Route path="/shop" element={loggedIn ? <ShopPage/> : <AuthenticationPage/>}/>
                   <Route path="/courses" element={loggedIn ? <CoursesPage/> : <AuthenticationPage/>}/>
                   <Route path="/course-type/:type" element={loggedIn ? <CourseSelectionPage/> : <AuthenticationPage/>}/>
-                  <Route path="/course/:id/:i" element={loggedIn ? <Question/> : <AuthenticationPage/>}/>
+                  <Route path="/course/:id" element={loggedIn ? <CourseDetailView/> : <AuthenticationPage/>}/>
                   <Route path="/register" element={!loggedIn && <Register/>}/>
               </Routes>
           </div>
