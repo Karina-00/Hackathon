@@ -1,36 +1,49 @@
-.ProfilePage {
-    margin: 100px 200px 100px 200px;
-    display: grid;
-    text-align: center;
-    grid-template-columns: 1fr 3fr;
-    align-items: flex-start;
+.ProfilePage{
+    width:80%; 
+    height:600px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:100px auto; 
 }
 
-.ImageCard {
-    min-width: 300px;
-    height: auto;
-    padding: 20px;
-    border: gray dotted 1px;
-    border-radius: 20px;
+.UserSide{
+    width:60%;
+    height: 600px;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    background-color: hsl(107, 36%, 82%);
+    border-radius: 15px 0 0 15px; 
 }
 
-.PageContent {
-    text-align: start;
-    margin: 0 50px;
+.AwardsSide{
+    width:40%; 
+    height:600px; 
+    display: flex;
+    flex-direction: column;
+    background-color: hsl(109, 8%, 51%);
+    border-radius: 0 15px 15px 0; 
+    box-sizing: border-box;
+    padding:30px;
 }
 
-.ItemsList {
-    width: 100%;
+.ProfileHeader{
+    font-size: 3rem;
+    margin-top: 40px;
+}
+
+.avatar{
+    width:200px; 
     height: 200px;
-    border: gray dotted 1px;
-    border-radius: 20px;
-    padding: 20px;
-    margin: 20px 0 20px 0;
+    margin-top: 30px;
+    border-radius: 100%;
+    border:20px solid hsl(107, 51%, 87%); 
 }
 
-.ProfilePicture {
-    width: 100%;
-    height: auto;
-    background-color: white;
-    object-fit: cover;
+.switchButton{
+   width:120px; 
+   height:40px; 
+   background-color: hsl(107, 51%, 87%);
+   border: 2px solid hsl(109, 8%, 51%);
 }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { Navigate, NavLink } from "react-router-dom";
+import RegisterImage from '../../assets/laptop.png';
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {changeEmail, changeIsLogin, changeName, changePassword, changeSurname} from "../../reducers/unLogUserSlice";
 import {createAsyncThunk} from "@reduxjs/toolkit";
@@ -57,33 +58,32 @@ const Register = () => {
     return (
         <>
             <ToastContainer />
-            <div className="row">
-                <div className="col-sm-4"></div>
-                <div className="col-sm-4">
+            <div className="row register-page">
+                <div className="col-sm-6 register-form">
                     <h1>User Register</h1>
                     <form>
-                        <div className="mb-3">
+                        <div className="mb-3 inputs">
                             <input
                                 onChange={(e) => dispatch(changeName(e.target.value))}
                                 className="form-control"
                                 placeholder="Name"
                             />
                         </div>
-                        <div className="mb-3">
+                        <div className="mb-3 inputs">
                             <input
                                 onChange={(e) => dispatch(changeSurname(e.target.value))}
                                 className="form-control"
                                 placeholder="Surname"
                             />
                         </div>
-                        <div className="mb-3">
+                        <div className="mb-3 inputs">
                             <input
                                 onChange={(e) => dispatch(changeEmail(e.target.value))}
                                 className="form-control"
                                 placeholder="Mail"
                             />
                         </div>
-                        <div className="mb-3">
+                        <div className="mb-3 inputs">
                             <input type='password'
                                    onChange={(e) => dispatch(changePassword(e.target.value))}
                                    className="form-control"
@@ -91,11 +91,12 @@ const Register = () => {
                             />
                         </div>
                         </form>
-                    <button className="btn btn-primary" onClick={()=> dispatch(setUserApiAsync({username: userName, password, name, email: userMail, surname }))}>Submit</button>
-                    <NavLink to="/" className="btn btn-danger" style={{ float:'right' }}>Cancel</NavLink>
-
+                    <button className="register-button" onClick={()=> dispatch(setUserApiAsync({username: userName, password, name, email: userMail, surname }))}>Submit</button>
+                    <NavLink to="/" className="sign-up" style={{ float:'right' }}>Cancel</NavLink>
                 </div>
-                <div className="col-sm-4"></div>
+                <div className="col-sm-6 register-img">
+                    <img src={RegisterImage} alt="laptop" className="register-image"></img>
+                </div>
             </div>
         </>
     );

@@ -19,9 +19,7 @@ function App() {
   return (
       <Router>
           <div className="App">
-              <Navbar
-                cash={3}
-              />
+              {loggedIn && <Navbar cash={3}/>}
               <Routes>
                   <Route path="/" element={loggedIn ? <ProfilePage/> : <AuthenticationPage/>}/>
                   <Route path="/profile" element={loggedIn ? <ProfilePage/> :  <AuthenticationPage/>}/>

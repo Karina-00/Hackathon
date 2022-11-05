@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { toast, ToastContainer } from "react-toastify";
 import { Navigate, NavLink } from "react-router-dom";
+import LoginPicture from '../../assets/loginImg.png'; 
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {changeIsLogin, changeName, changePassword} from "../../reducers/unLogUserSlice";
 import {createAsyncThunk} from "@reduxjs/toolkit";
@@ -48,29 +49,27 @@ const Login = () => {
     return (
         <>
             <ToastContainer/>
-            <div className='row'>
-                <div className='col-sm-4'></div>
-                <div className='col-sm-4'>
-                    <h1>User Login</h1>
+            <div className='row login-page'>
+                <div className='col-sm-6 login-img'>
+                <img src={LoginPicture} className="loginImg" alt="people-at-work"></img>
+                </div>
+                <div className='col-sm-6 login-form'>
+                    <h1>Login to your account</h1>
                     <form>
-                        <div className="mb-3">
-                            <label htmlFor="exampleInputName1" className="form-label">Username</label>
-                            <input ref={refEmail} onChange={(e) => dispatch(changeName(e.target.value))} type="name" className="form-control" id="exampleInputName1"  />
+                        <div className="inputs">
+                            <input ref={refEmail} onChange={(e) => dispatch(changeName(e.target.value))} type="name" className="form-control" id="exampleInputName1"  placeholder="Username"/>
                         </div>
-                        <div className="mb-3">
-                            <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                            <input ref={refPassword} onChange={(e) => dispatch(changePassword(e.target.value))} type="password" className="form-control" id="exampleInputPassword1"  />
+                        <div className="inputs">
+                            <input ref={refPassword} onChange={(e) => dispatch(changePassword(e.target.value))} type="password" className="form-control" id="exampleInputPassword1"  placeholder="Password"/>
                         </div>
-
                     </form>
-                    <button className="btn btn-primary" onClick={()=> dispatch(getLoginUserApiAsync({username, password}))}>Login</button>
-                    <NavLink to="/register" className="btn btn-success" style={{ float:'right' }}
+                    <button className="login-button" onClick={()=> dispatch(getLoginUserApiAsync({username, password}))}>Login</button>
+                    <NavLink to="/register" className="create-account" style={{ float:'right' }}
                              onClick={()=>{
                                  dispatch(changePassword(''));
                                  dispatch(changeName(''));}}>Register
                     </NavLink>
                 </div>
-                <div className='col-sm-4'></div>
             </div>
 
         </>
