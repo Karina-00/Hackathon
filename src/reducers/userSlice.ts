@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {unLogUserSlice} from "./unLogUserSlice";
 
 
 type UserProps = {
@@ -21,9 +22,16 @@ const initialState: UserProps = {
 export const userSlice = createSlice({
 	name: 'user',
 	initialState,
-	reducers: {},
+	reducers: {
+		changeIsLoginD: (state, { payload }: PayloadAction<UserProps['isLogin']>) => {
+			state.isLogin = payload;
+			console.log(state.isLogin);
+		},
+	},
 	extraReducers: (builder) => {
 	},
 },)
+
+export const { changeIsLoginD }= userSlice.actions;
 
 export default userSlice.reducer;

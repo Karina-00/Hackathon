@@ -44,7 +44,7 @@ code {
   position:relative; 
 }
 
-.avatar-item:hover .dropdown-content{
+.avatar-item .dropdown-content{
    display: block;
 }
 

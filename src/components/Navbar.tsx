@@ -1,11 +1,17 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+
+import React, {useState} from "react";
+import {NavLink} from "react-router-dom";
+import {useAppDispatch, useAppSelector} from "../hooks";
+import {changeIsLoginD} from "../reducers/userSlice";
 
 type Props = {
     cash:number; 
 }
 
 function Navbar({cash}:Props) {
+    const dispatch = useAppDispatch();
+    const [isRedirect, setIsRedirect] = useState(false);
+    const loggedIn = useAppSelector((state) => state.userSlice.isLogin);
     return (
         <nav className="navbar navbar-expand-lg">
             <div className="container-fluid">
@@ -22,18 +28,18 @@ function Navbar({cash}:Props) {
                     </form>
                     <ul className="navbar-nav mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <a className="nav-link" aria-current="page" href="#">Sklep</a>
+                            <NavLink to="/shop" className="nav-link">Shop</NavLink>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Kursy</a>
+                            <NavLink to="/courses" className="nav-link">Courses</NavLink>
                         </li>
-                        <li className="nav-item avatar-item">
+                        <li className="nav-item avatar-item" onClick={()=>setIsRedirect(true)}>
                             <img src='https://www.w3schools.com/howto/img_avatar.png' alt="userAvatar" className="user-avatar"></img>
                             <div className="dropdown-content">
                               <div className="square"></div>
                               <a href="#" className="dropdown-item di-top">Notifications</a>
-                              <a href="#" className="dropdown-item">My account</a>
-                              <a href="#" className="dropdown-item di-btm">Log out</a>
+                                <NavLink to="/profile" className="dropdown-item">My account</NavLink>
+                                <NavLink to="/" className="dropdown-item" onClick={()=>{dispatch(changeIsLoginD(false))}}>Log out</NavLink>
                             </div>
                         </li>
                         <li className="nav-item">

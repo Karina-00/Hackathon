@@ -1,0 +1,19 @@
+
+.CoursesPageContainer {
+    margin: 50px;
+}
+
+.CourseTypesGrid {
+    display: flex;
+    margin: 50px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.Tile {
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    border: black dotted 1px;
+    margin: 40px;
+}
