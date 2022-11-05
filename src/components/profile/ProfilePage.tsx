@@ -1,12 +1,38 @@
 import React from "react";
 import "./profile_page.css";
-import ProfilePicture from '../../assets/avatar_placeholder.png';
 import LoginImage from '../../assets/loginImg.png'; 
-import {useAppSelector} from "../../hooks"; 
+import {useAppDispatch, useAppSelector} from "../../hooks";
+import {createAsyncThunk} from "@reduxjs/toolkit";
+import {changeIsLogin} from "../../reducers/unLogUserSlice";
+import {changeIsLoginD, changeUser} from "../../reducers/userSlice";
+import {toast} from "react-toastify";
+import dark = toast.dark;
+
+
+const getUserApiAsync = createAsyncThunk(
+    'ProfilePage',
+    async (id:number, { rejectWithValue , dispatch}) => {
+        try {
+            await fetch(`https://chilledu-backend.herokuapp.com/api/children/${id}`, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            }).then((response) =>
+                response.json()
+            ).then(data=>
+                dispatch(changeUser(data)));
+        } catch (err) {
+            return rejectWithValue(err);
+        }
+    },
+);
 
 
 const ProfilePage = () => {
     const username = useAppSelector((state) => state.userSlice.username);
+    const dispatch = useAppDispatch();
     return (
        <div className="ProfilePage">
          <div className="UserSide">
@@ -16,7 +42,8 @@ const ProfilePage = () => {
          </div>
          <div className="AwardsSide">
             <div className="switch">
-              <button className="switchButton">Awards</button>
+              <button className="switchButton" onClick={()=> dispatch(getUserApiAsync(1))}
+                >Awards</button>
               <button className="switchButton">Storage</button>
             </div>
          </div>
