@@ -1,23 +1,21 @@
 import React from "react";
-import {Question} from "./CourseDetailView";
 
+type QuestionHandler = {
+    question: string;
+    answers: string[];
+    handleNextQuestion: Function;
+}
 
-const QuestionView = ({question, answers}: Question) => {
+const QuestionView = ({question, answers, handleNextQuestion}: QuestionHandler) => {
 
     return(
         <div className="QuestionCard">
             <h3>{question}</h3>
-                {/*set as radio button*/}
                 {answers.map((answer: string) => (
                     <button>{answer}</button>
                 ))}
 
-            {/*{!isItLastQuestion &&*/}
-            {/*    <button>Next question</button>*/}
-            {/*}*/}
-            {/*{isItLastQuestion && <NavLink to={`/courses`}>*/}
-            {/*    <button>Finish course</button>*/}
-            {/*    </NavLink>}*/}
+            <button onClick={() => handleNextQuestion()}>Next question</button>
         </div>
     )
 }
